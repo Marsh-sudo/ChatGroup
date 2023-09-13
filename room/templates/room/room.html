@@ -40,20 +40,23 @@
         + '/'
     );
 
-    chatSocket.onclose = function(e) {
-        console.log('onclose')
-    }
-
+    
     chatSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
 
-        if (data.message) {
-            document.querySelector('#chat-messages').innerHTML += ('<b>' + data.username + '</b>: ' + data.message + '<br>');
-        } else {
-            alert('The message was empty!')
-        }
+        console.log('onmessage')
+
+        // if (data.message) {
+        //     document.querySelector('#chat-messages').innerHTML += ('<b>' + data.username + '</b>: ' + data.message + '<br>');
+        // } else {
+        //     alert('The message was empty!')
+        // }
 
         scrollToBottom();
+    };
+
+    chatSocket.onclose = function(e) {
+        console.log('onclose')
     };
 
     document.querySelector('#chat-message-input').focus();
